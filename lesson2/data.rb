@@ -1,5 +1,6 @@
 # coding: utf-8
 
+
 puts "Введите день:"
 day = gets.chomp.to_i
 puts "Введите месяц"
