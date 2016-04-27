@@ -36,18 +36,24 @@ class Train
   end
 
   def gets_routes(train_route)
-    # Принимать маршрут следования
+    self.route = train_route
+    self.current_station = 0
   end
 
   def show_routes
-    # Показывать предыдущую станцию, текущую, следующую, на основе маршрута
+    return if route.nil?
+    puts "Previous station was #{route.station(current_station - 1).name}"\
+    unless current_station.zero?
+    puts "Current station is #{route.station(current_station).name}"
+    puts "Next station will be #{route.station(current_station + 1).name}"\
+    unless route.station(current_station + 1).nil?
   end
 
   def go_prev
-    # Перемещаться между станциями, указанными в маршруте
+    self.current_station -= 1 unless current_station.zero?
   end
 
   def go_next
-    # Перемещаться между станциями, указанными в маршруте
+    self.current_station += 1 unless route.station(current_station + 1).nil?
   end
 end
