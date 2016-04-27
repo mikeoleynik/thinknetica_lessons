@@ -1,5 +1,5 @@
 class Routes
-  attr_reader :route
+  attr_accessor :route
 
   def initialize(primary, terminal)
     @route = [primary, terminal]   

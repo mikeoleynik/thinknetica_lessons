@@ -35,7 +35,7 @@ class Train
     puts "Количество вагонов: #{car_count}"
   end
 
-  def gets_routes(train_route)
+  def gets_routes(route)
     self.route = train_route
     self.current_station = 0
   end
