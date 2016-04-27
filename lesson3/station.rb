@@ -3,14 +3,14 @@ class Station
     
   def initialize(name)
     @name = name
-    @trains = []       
+    @trains = []
   end 
 
   def add_train(train, type)
     trains << train 
   end
 
-  def send_train
+  def send_train(train)
     trains.delete(train)
   end
 

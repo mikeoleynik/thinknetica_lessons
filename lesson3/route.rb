@@ -5,15 +5,16 @@ class Routes
     @route = [primary, terminal]   
   end 
 
-  def add_station(add_name)
-    @route.insert(@route.size-1, add_name)
+  def add_station(station)
+    @route.insert(@route.size-1, station)
   end  
 
-  def del_station(del_name)
-    @route.delete(del_name)
+  def del_station(del_station)
+    @route.delete(del_station)
   end   
 
   def show_station
-    @route
+    puts "В маршрут входят следующие станции:"
+    puts @route
   end
 end
