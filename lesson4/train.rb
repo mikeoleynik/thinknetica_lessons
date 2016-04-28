@@ -2,6 +2,7 @@ class Train
   attr_accessor :car_count, :speed      #количество вагонов, скорость
   attr_accessor :route
   attr_reader :train_number, :train_type     #номер поезда, тип поезда
+  attr_writer :current_station
   
   def initialize(train_number, train_type, car_count)
     @train_number = train_number
