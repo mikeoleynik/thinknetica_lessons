@@ -6,7 +6,7 @@
 Если D = 0, то выводим дискриминант и 1 корень (т.к. они в этом случае равны)  
 Если D < 0, то выводим дискриминант и сообщение "Корней нет"  
 **Подсказка:** Алгоритм решения с блок-схемой ([www.bolshoyvopros.ru](http://www.bolshoyvopros.ru/questions/299829-kak-sostavit-algoritm-reshenija-kvadratnogo-uravnenija.html)). Для вычисления квадратного корня, нужно использовать  
-'Math.sqrt'  
+`Math.sqrt`  
  Например,  
-'Math.sqrt(16)'  
+`Math.sqrt(16)`  
  вернет 4, т.е. квадратный корень из 16.
