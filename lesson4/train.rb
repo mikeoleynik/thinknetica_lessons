@@ -20,14 +20,12 @@ class Train
   end
 
   def add_car
-    if speed == 0
-      @car_count += 1
+      @car_count += 1 if speed == 0 # исправил на постфиксную форму записи
     end
   end
 
   def del_car
-    if speed == 0
-      @car_count -= 1
+      @car_count -= 1 if speed == 0 # исправил на постфиксную форму записи
     end
   end
 
@@ -39,7 +37,7 @@ class Train
     self.route = train_route
     self.current_station = 0
   end
-
+# сделай отдельные методы для показа текущей/предыдущей/следующей станции
   def show_routes
     return if route.nil?
     puts "Previous station was #{route.station(current_station - 1).name}"\
