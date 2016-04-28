@@ -9,6 +9,7 @@ class Train
     @train_type = train_type
     @car_count = car_count
     @speed = 0
+    @train_array = [] # объекты вагонов сохранять сюда (из passenger_car && cargo_car)
   end
 
   def stop
