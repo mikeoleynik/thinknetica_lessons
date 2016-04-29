@@ -1,7 +1,8 @@
 class CargoCar < Cars
 
-  def add_car(type_car = "cargo")
-      super
+  def initialize(number, type_car = "cargo")
+    @number = number
+    puts "Создан вагон №#{@number} типа #{@type_car}"      
   end
 
 end

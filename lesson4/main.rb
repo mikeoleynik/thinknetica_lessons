@@ -8,19 +8,20 @@ require_relative "./cargo_car.rb"
 require_relative "./passenger_car.rb"
 
 
-station = Station.new("Lipetsk") # Создавать станции
-station = Station.new("Voronezh")
-train_1 = PassengerTrain.new(2, 12) # Создавать поезда
-train_2 = CargoTrain.new(30, 13)
+stations = []
+stations << Station.new("Lipetsk") # Создавать станции
+stations << Station.new("Voronezh")
+puts stations # Просматривать список станций и список поездов на станции
 
-station.show_trains # Просматривать список поездов на станции
-station.list_station # Просматривать список станций
+train_array = []
+train_1 << PassengerTrain.new(2, 12) # Создавать поезда
+train_2 << CargoTrain.new(30, 13)
+puts train_array
 
-
-car_1 = CargoCar.new(1, "cargo_car") # Добавлять вагоны к поезду
-car_2 = CargoCar.new(1, "cargo_car")
-car_3 = PassengerCar.new(1, "passenger_car")
+car_1 = CargoCar.new(1) # Создал вагон
+car_2 = CargoCar.new(2)
+car_3 = PassengerCar.new(1)
+car_1.
 train_2.del_car # Отцеплять вагоны от поезда
 
-
-station.add_train_to_station(2) # Помещать поезда на станцию
+# Помещать поезда на станцию

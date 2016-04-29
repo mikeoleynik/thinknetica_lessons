@@ -11,11 +11,6 @@ class Station
     station << train
   end
 
-def list_station
-  puts "Список станций:"
-  puts @name  
-end
-
   def add_train(train, type)
     trains << train 
   end
