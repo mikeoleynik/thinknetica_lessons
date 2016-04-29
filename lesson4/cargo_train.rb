@@ -1,6 +1,6 @@
 class CargoTrain < Train
 
-  def initialize(number, type = :cargo)
+  def initialize(train_number, train_type = :cargo, car_count)
     super
   end
 

@@ -22,12 +22,12 @@ class Train
 
   def add_car
       @car_count += 1 if speed == 0 # исправил на постфиксную форму записи
-    end
+    
   end
 
   def del_car
       @car_count -= 1 if speed == 0 # исправил на постфиксную форму записи
-    end
+    
   end
 
   def cars_number
