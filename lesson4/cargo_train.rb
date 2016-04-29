@@ -7,6 +7,17 @@ class CargoTrain < Train
     puts "Создан грузовой поезд №#{train_number}, кол-во вагонов #{car_count}"
   end
 
+  def add_car_to_train
+    @car_count += 1 if speed == 0
+    puts "Добавлен грузовой вагон #{car_count} к грузовому поезду #{train_number}"     
+  end
+
+  def del_car_to_train
+    @car_count -= 1 if speed == 0
+    puts "Отцеплен грузовой вагон #{car_count} от грузового поезда #{train_number}"
+  end
+
 end
-# coding: utf-8
+
+
 

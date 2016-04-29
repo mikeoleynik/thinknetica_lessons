@@ -18,10 +18,13 @@ train_array << PassengerTrain.new(2, 12)
 train_array << CargoTrain.new(30, 13)
 puts "#{train_array}"
 
+train = CargoTrain.new(3, 33)
+train.add_car_to_train
+
 car_1 = CargoCar.new(1) 
 car_2 = CargoCar.new(2)
 car_3 = PassengerCar.new(1)
-
+# Добавлять вагоны к поезду
 # Отцеплять вагоны от поезда
-# Помещать поезда на станцию
+# Помещать поезда на станцию 
 # Просматривать список поездов на станции
