@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class Train
   attr_accessor :car_count, :speed      #количество вагонов, скорость
   attr_accessor :route

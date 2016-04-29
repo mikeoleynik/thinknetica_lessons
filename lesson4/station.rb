@@ -1,10 +1,11 @@
+# coding: utf-8
+
 class Station
   attr_reader :name, :trains
     
   def initialize(name)
     @name = name
-    @trains = [] # объекты вагонов сохранять сюда (из passenger_car && cargo_car)
-    @station = []
+    puts "создана станция #{name}"
   end 
 
   def add_train_to_station(train)
