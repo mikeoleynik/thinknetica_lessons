@@ -1,7 +1,7 @@
 # coding: utf-8
 
 class Routes
-  attr_reader :route
+  attr_accessor :route
   
 
   def initialize(primary, terminal)
@@ -21,6 +21,4 @@ class Routes
     puts @route
   end
 
-  private
-  attr_writer :route # потому что 
 end
