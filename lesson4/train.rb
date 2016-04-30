@@ -12,7 +12,9 @@ class Train
     @car_count = car_count
     @speed = 0
   end
+#puts "Создан грузовой поезд №#{train_number}, кол-во вагонов #{car_count}"
 
+#puts "Создан пассажирский поезд №#{train_number}, кол-во вагонов #{car_count}"
   def stop
     @speed = 0    
   end
@@ -21,12 +23,24 @@ class Train
     puts "Текущая скорость: #{speed}"
   end
 
-  def add_car
-      @car_count += 1 if speed == 0     
+  def add_cargo_to_train(car_type)
+    @car_count += 1 if speed == 0 && car_type == "cargo"    
+    puts "Добавлен грузовой вагон #{car_count} к грузовому поезду #{train_number}"  
   end
 
-  def del_car
-      @car_count -= 1 if speed == 0 
+  def add_pass_to_train(car_type)
+    @car_count += 1 if speed == 0 && car_type == "passenger"    
+    puts "Добавлен пассажирский вагон #{car_count} к пассажирскому поезду #{train_number}"
+  end
+
+  def del_cargo_to_train(car_type)
+    @car_count -= 1 if speed == 0 && car_type == "cargo"
+    puts "В грузовом поезде #{train_number} теперь вагонов #{car_count} шт."
+  end
+
+  def del_pass_to_train(car_type)
+    @car_count -= 1 if speed == 0 && car_type == "passenger"
+    puts "В пассажирском поезде #{train_number} теперь вагонов #{car_count} шт."
   end
 
   def cars_number
