@@ -6,6 +6,8 @@ class Station
   def initialize(name)
     @name = name
     puts "создана станция #{name}"
+    @trains = []
+    @station = []
   end 
 
   def add_train_to_station(train)

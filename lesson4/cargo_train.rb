@@ -14,7 +14,7 @@ class CargoTrain < Train
 
   def del_car_to_train
     @car_count -= 1 if speed == 0
-    puts "Отцеплен грузовой вагон #{car_count} от грузового поезда #{train_number}"
+    puts "В грузовом поезде #{train_number} теперь вагонов #{car_count} шт."
   end
 
 end
