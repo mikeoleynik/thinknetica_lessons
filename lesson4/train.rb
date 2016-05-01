@@ -12,9 +12,7 @@ class Train
     @car_count = car_count
     @speed = 0
   end
-#puts "Создан грузовой поезд №#{train_number}, кол-во вагонов #{car_count}"
 
-#puts "Создан пассажирский поезд №#{train_number}, кол-во вагонов #{car_count}"
   def stop
     @speed = 0    
   end
@@ -71,6 +69,5 @@ class Train
   def go_next
     self.current_station += 1 unless route.station(current_station + 1).nil?
   end
-
 
 end

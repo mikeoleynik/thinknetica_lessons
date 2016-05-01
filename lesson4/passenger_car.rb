@@ -3,8 +3,7 @@
 class PassengerCar < Cars
 
   def initialize(number, type_car = :passenger)
-    @number = number
-    puts "Создан вагон №#{@number} типа #{type_car}"      
+    super      
   end
 
 end
