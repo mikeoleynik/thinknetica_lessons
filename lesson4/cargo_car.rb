@@ -9,7 +9,7 @@ class CargoCar < Cars
   end
 
 	def add_car(type_car = :cargo)
-    super
+    super # почему не работает super? 
   end
 
 end
