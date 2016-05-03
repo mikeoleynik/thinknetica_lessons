@@ -13,6 +13,7 @@ class Train
     @car_count = car_count
     @speed = 0
     @cars_arr = []
+    puts "Создан #{train_type} поезд №#{train_number} с количеством вагонов - #{car_count} шт."
   end
 
   def stop
@@ -27,6 +28,7 @@ class Train
       if speed == 0 && type_car == "cargo"
         @car_count += 1     
         puts "Добавлен грузовой вагон #{car_count} к грузовому поезду #{train_number}"
+        self.cars_arr << type_car
       elsif speed == 0 && type_car == "passenger"
         @car_count += 1     
         puts "Добавлен пассажирский вагон #{car_count} к пассажирскому поезду #{train_number}"    

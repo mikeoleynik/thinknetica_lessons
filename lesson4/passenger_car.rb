@@ -3,8 +3,7 @@
 class PassengerCar < Cars
 
   def initialize(number, type_car = :passenger)
-    super
-    # self.cars_arr << PassengerCar.new(number)      
+    super   
   end
 
 end
