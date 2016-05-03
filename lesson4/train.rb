@@ -28,7 +28,7 @@ class Train
       if speed == 0 && type_car == "cargo"
         @car_count += 1     
         puts "Добавлен грузовой вагон #{car_count} к грузовому поезду #{train_number}"
-        self.cars_arr << type_car
+        @cars_arr << type_car
       elsif speed == 0 && type_car == "passenger"
         @car_count += 1     
         puts "Добавлен пассажирский вагон #{car_count} к пассажирскому поезду #{train_number}"    

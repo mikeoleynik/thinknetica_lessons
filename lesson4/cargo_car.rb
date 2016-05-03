@@ -1,8 +1,9 @@
 # coding: utf-8
 
-class CargoCar < Cars
- # attr_accessor :type_car
+require_relative "./train.rb"
 
+class CargoCar < Cars
+ 
   def initialize(number, type_car = :cargo)
     super     
   end

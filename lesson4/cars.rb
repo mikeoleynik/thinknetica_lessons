@@ -6,8 +6,7 @@ class Cars
 
   def initialize(number, type_car)
     @number = number
-    puts "Создан вагон №#{@number} типа #{type_car}"  
-    @cars_arr = []    
+    puts "Создан вагон №#{@number} типа #{type_car}"   
   end
 
 end

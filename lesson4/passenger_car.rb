@@ -6,4 +6,8 @@ class PassengerCar < Cars
     super   
   end
 
+  def add_car(type_car = :cargo)
+    super
+  end
+  
 end
