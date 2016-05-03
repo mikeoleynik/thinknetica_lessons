@@ -5,12 +5,14 @@ class Train
   attr_accessor :route
   attr_reader :train_number, :train_type     #номер поезда, тип поезда
   attr_accessor :current_station
+  attr_accessor :type_car
   
   def initialize(train_number, train_type, car_count)
     @train_number = train_number
     @train_type = train_type
     @car_count = car_count
     @speed = 0
+    @cars_arr = []
   end
 
   def stop
@@ -21,24 +23,24 @@ class Train
     puts "Текущая скорость: #{speed}"
   end
 
-  def add_cargo_to_train(car_type)
-    @car_count += 1 if speed == 0 && car_type == "cargo"    
-    puts "Добавлен грузовой вагон #{car_count} к грузовому поезду #{train_number}"  
+  def add_car(type_car)
+      if speed == 0 && type_car == "cargo"
+        @car_count += 1     
+        puts "Добавлен грузовой вагон #{car_count} к грузовому поезду #{train_number}"
+      elsif speed == 0 && type_car == "passenger"
+        @car_count += 1     
+        puts "Добавлен пассажирский вагон #{car_count} к пассажирскому поезду #{train_number}"    
+      end
   end
 
-  def add_pass_to_train(car_type)
-    @car_count += 1 if speed == 0 && car_type == "passenger"    
-    puts "Добавлен пассажирский вагон #{car_count} к пассажирскому поезду #{train_number}"
-  end
-
-  def del_cargo_to_train(car_type)
-    @car_count -= 1 if speed == 0 && car_type == "cargo"
-    puts "В грузовом поезде #{train_number} теперь вагонов #{car_count} шт."
-  end
-
-  def del_pass_to_train(car_type)
-    @car_count -= 1 if speed == 0 && car_type == "passenger"
-    puts "В пассажирском поезде #{train_number} теперь вагонов #{car_count} шт."
+  def del_car(type_car)
+    if speed == 0 && type_car == "cargo"
+      @car_count -= 1 
+      puts "В грузовом поезде #{train_number} теперь вагонов #{car_count} шт."
+    elsif speed == 0 && type_car == "passenger"
+      @car_count -= 1 
+      puts "В пассажирском поезде #{train_number} теперь вагонов #{car_count} шт."
+    end
   end
 
   def cars_number
