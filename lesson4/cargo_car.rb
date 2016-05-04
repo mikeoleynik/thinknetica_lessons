@@ -8,8 +8,8 @@ class CargoCar < Cars
     super     
   end
 
-	def add_car(type_car = :cargo)
-    super # почему не работает super? 
+	def add_car(car, type_car = :cargo)
+    super
   end
 
 end

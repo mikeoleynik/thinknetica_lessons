@@ -6,11 +6,11 @@ class PassengerTrain < Train
     super
   end
 
-  def add_pass_to_train(car_type = :passenger)
+  def add_car(car_type = :passenger)
     super 
   end
 
-  def del_pass_to_train(car_type = :passenger)
+  def del_car(car_type = :passenger)
   	super 
   end
 

@@ -6,11 +6,11 @@ class CargoTrain < Train
     super
   end
 
-  def add_cargo_to_train(car_type = :cargo)
+  def add_car(car_type = :cargo)
     super  
   end
 
-  def del_cargo_to_train(car_type = :cargo)
+  def del_car(car_type = :cargo)
     super 
   end
 
