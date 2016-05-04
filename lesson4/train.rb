@@ -12,7 +12,7 @@ class Train
     @train_type = train_type
     @car_count = car_count
     @speed = 0
-    @cars_arr = []
+    @cars_arr = [] # сюда сохраняет объекты вагонов
     puts "Создан #{train_type} поезд №#{train_number} с количеством вагонов - #{car_count} шт."
   end
 
@@ -24,7 +24,7 @@ class Train
     puts "Текущая скорость: #{speed}"
   end
 
-  def add_car(car) # принимает в качестве аргумента сам объект вагона (Как?)
+  def add_car(car, type_car) # принимает в качестве аргумента сам объект вагона (Как?)
       if speed == 0 && type_car == "cargo"
         @car_count += 1     
         puts "Добавлен грузовой вагон #{car_count} к грузовому поезду #{train_number}"
