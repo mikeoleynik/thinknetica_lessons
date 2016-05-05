@@ -191,5 +191,5 @@ class TrainConsole
   end
 end
 
-train_console = TrainConsole.new
-train_console.start
+# train_console = TrainConsole.new
+# train_console.start

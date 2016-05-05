@@ -1,19 +1,17 @@
 # coding: utf-8
 
 class Train
-  attr_accessor :car_count, :speed      #количество вагонов, скорость
+  attr_accessor :speed      #количество вагонов, скорость
   attr_accessor :route
-  attr_reader :train_number, :train_type     #номер поезда, тип поезда
+  attr_reader :train_number, :cars     #номер поезда, тип поезда
   attr_accessor :current_station
   attr_accessor :type_car
   
-  def initialize(train_number, train_type, car_count)
+  def initialize(train_number)
     @train_number = train_number
-    @train_type = train_type
-    @car_count = car_count
     @speed = 0
-    @cars_arr = []
-    puts "Создан #{train_type} поезд №#{train_number} с количеством вагонов - #{car_count} шт."
+    @cars = []
+    puts "Создан поезд №#{train_number}"
   end
 
   def stop
@@ -24,26 +22,32 @@ class Train
     puts "Текущая скорость: #{speed}"
   end
 
-  def add_car(car, type_car) 
-      if speed == 0 && type_car == "cargo"
-        @car_count += 1     
-        puts "Добавлен грузовой вагон #{car_count} к грузовому поезду #{train_number}"
-        @cars_arr << car 
-      elsif speed == 0 && type_car == "passenger"
-        @car_count += 1     
-        puts "Добавлен пассажирский вагон #{car_count} к пассажирскому поезду #{train_number}"
-        @cars_arr << car
-      end
+  def car_count
+    @cars.size
   end
 
-  def del_car(type_car)
-    if speed == 0 && type_car == "cargo"
-      @car_count -= 1 
-      puts "В грузовом поезде #{train_number} теперь вагонов #{car_count} шт."
-    elsif speed == 0 && type_car == "passenger"
-      @car_count -= 1 
-      puts "В пассажирском поезде #{train_number} теперь вагонов #{car_count} шт."
-    end
+  def add_car(car) 
+    @cars << car if speed == 0 && car_allowed?(car)
+      # if speed == 0 && type_car == "cargo"
+      #   @car_count += 1     
+      #   puts "Добавлен грузовой вагон #{car_count} к грузовому поезду #{train_number}"
+      #   @cars_arr << car 
+      # elsif speed == 0 && type_car == "passenger"
+      #   @car_count += 1     
+      #   puts "Добавлен пассажирский вагон #{car_count} к пассажирскому поезду #{train_number}"
+      #   @cars_arr << car
+      # end
+  end
+
+  def del_car(car)
+    @cars.delete(car) if speed == 0
+    # if speed == 0 && type_car == "cargo"
+    #   @car_count -= 1 
+    #   puts "В грузовом поезде #{train_number} теперь вагонов #{car_count} шт."
+    # elsif speed == 0 && type_car == "passenger"
+    #   @car_count -= 1 
+    #   puts "В пассажирском поезде #{train_number} теперь вагонов #{car_count} шт."
+    # end
   end
 
   def cars_number
