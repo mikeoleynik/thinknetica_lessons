@@ -1,12 +1,14 @@
 # coding: utf-8
 
 class Train
+  include Company 
+
   attr_accessor :speed      #количество вагонов, скорость
   attr_accessor :route
   attr_reader :train_number, :cars     #номер поезда, тип поезда
   attr_accessor :current_station
   attr_accessor :type_car
-  
+
   def initialize(train_number)
     @train_number = train_number
     @speed = 0
