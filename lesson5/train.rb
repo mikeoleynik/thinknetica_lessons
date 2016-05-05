@@ -6,6 +6,13 @@ class Train
   attr_reader :train_number, :cars     #номер поезда, тип поезда
   attr_accessor :current_station
   attr_accessor :type_car
+
+  # В классе Train создать метод класса find, который принимает номер поезда (указанный при его создании) 
+  # и возвращает объект поезда по номеру или nil, если поезд с таким номером не найден.
+    
+  def self.find(train_number)
+    @train_number
+  end
   
   def initialize(train_number)
     @train_number = train_number
