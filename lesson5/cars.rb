@@ -2,7 +2,8 @@
 require_relative "./train.rb"
 
 class Cars
- attr_accessor :type_car
+  include Company 
+  attr_accessor :type_car
 
   def initialize(number, type_car)
     @number = number

@@ -2,6 +2,10 @@
 
 class Station
   attr_reader :name, :trains
+
+  def self.all
+    @stations
+  end
     
   def initialize(name)
     @name = name
@@ -33,3 +37,7 @@ class Station
      trains.each { |train| train == type } # выводит просто список, не по типу.
   end
 end
+
+
+# В классе RailwayStation (жд станция) создать метод класса all, 
+# который выводит список всех станций, созданных на данный момент
