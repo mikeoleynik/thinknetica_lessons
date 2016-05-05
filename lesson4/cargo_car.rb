@@ -8,7 +8,7 @@ class CargoCar < Cars
     super     
   end
 
-	def add_car(car, type_car = :cargo) # метод переопределен?
+	def add_car(car, type_car = :cargo)
     super
   end
 
