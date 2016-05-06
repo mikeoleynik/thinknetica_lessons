@@ -1,18 +1,30 @@
 # coding: utf-8
 
-class Station
-  attr_reader :name, :trains
+# В классе RailwayStation (жд станция) создать метод класса all, 
+# который выводит список всех станций, созданных на данный момент
 
-  def self.all
-    @stations
-  end
-    
+class Station
+  include InstanceCounter
+
+  attr_reader :name, :trains
+  
+  @@stations = []
+
   def initialize(name)
     @name = name
     puts "создана станция #{name}"
     @trains = []
     @station = []
+    @@stations << name
   end 
+
+  def self.all
+    puts "Станции: #{@@stations}"
+  end
+
+  def station_list
+    @@stations
+  end
 
   def add_train_to_station(train)
     station << train
@@ -37,7 +49,3 @@ class Station
      trains.each { |train| train == type } # выводит просто список, не по типу.
   end
 end
-
-
-# В классе RailwayStation (жд станция) создать метод класса all, 
-# который выводит список всех станций, созданных на данный момент

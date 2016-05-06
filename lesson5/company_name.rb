@@ -1,6 +1,6 @@
 class Company::Name
 
-  attr_accessor :name
+  attr_accessor :company_name
 
 end
 

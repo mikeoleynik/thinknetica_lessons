@@ -10,7 +10,7 @@ Module InstanceCounter
 
   @@instances = 0
 
-    def instances
+    def self.instances
       @@instances
     end
 

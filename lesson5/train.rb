@@ -1,6 +1,9 @@
 # coding: utf-8
 
 class Train
+  include Company
+  include InstanceCounter
+
   attr_accessor :speed      #количество вагонов, скорость
   attr_accessor :route
   attr_reader :train_number, :cars     #номер поезда, тип поезда
@@ -9,16 +12,20 @@ class Train
 
   # В классе Train создать метод класса find, который принимает номер поезда (указанный при его создании) 
   # и возвращает объект поезда по номеру или nil, если поезд с таким номером не найден.
-    
-  def self.find(train_number)
-    @train_number
-  end
-  
+  @@trains = []
+
   def initialize(train_number)
     @train_number = train_number
     @speed = 0
     @cars = []
     puts "Создан поезд №#{train_number}"
+    @@train_numbers = 
+    register_instance
+    trains[train_number] = self
+  end
+
+  def self.find(train_number)
+    @@trains[train_number]
   end
 
   def stop
