@@ -6,17 +6,28 @@
 #        - register_instance, который увеличивает счетчик кол-ва экземпляров класса и который можно 
 #          вызвать из конструктора. При этом данный метод не должен быть публичным.
 
-Module InstanceCounter
+module InstanceCounter
 
-  @@instances = 0
+  def self.included(base)
+    base.extend ClassMethods
+    base.send :include, InstanceMethods
+  end
+
+  module ClassMethods
+    attr_accessor :instances
 
     def self.instances
       @@instances
     end
+  end
 
-  protected
-    def register_instance # поместить в любой initialize
-      @@instances += 1  
-    end
+  module InstanceMethods
+  
+    protected
+      def register_instance 
+        self.class.instances ||= 0
+        self.class.instances += 1  
+      end
+  end
 
 end  

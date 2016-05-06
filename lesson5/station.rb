@@ -10,6 +10,10 @@ class Station
   
   @@stations = []
 
+  def self.all
+    puts "Станции: #{@@stations}"
+  end
+
   def initialize(name)
     @name = name
     puts "создана станция #{name}"
@@ -17,10 +21,6 @@ class Station
     @station = []
     @@stations << name
   end 
-
-  def self.all
-    puts "Станции: #{@@stations}"
-  end
 
   def station_list
     @@stations

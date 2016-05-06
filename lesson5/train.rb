@@ -14,18 +14,17 @@ class Train
   # и возвращает объект поезда по номеру или nil, если поезд с таким номером не найден.
   @@trains = []
 
+  def self.find(train_number)
+    @@trains[train_number]
+  end
+
   def initialize(train_number)
+    register_instance
     @train_number = train_number
     @speed = 0
     @cars = []
     puts "Создан поезд №#{train_number}"
-    @@train_numbers = 
-    register_instance
-    trains[train_number] = self
-  end
-
-  def self.find(train_number)
-    @@trains[train_number]
+    @@trains[train_number] = self
   end
 
   def stop
