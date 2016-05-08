@@ -40,7 +40,7 @@ private
 
   def create_train
     puts "Input train number"
-    number = gets.chomp
+    train_number = gets.chomp
     self.trains << Train.new(train_number)
   rescue RuntimeError => e
     puts e.message
