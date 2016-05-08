@@ -13,11 +13,10 @@ class Station
 
   def initialize(name)
     @name = name
-    name
+    validate!
     @trains = []
     @station = []
-    @@stations << name
-    validate!
+    @@stations << self
   end 
 
   def valid?

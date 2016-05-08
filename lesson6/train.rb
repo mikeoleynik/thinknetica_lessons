@@ -1,14 +1,14 @@
 # coding: utf-8
 
 class Train
-  include Company
   include InstanceCounter
-
+  include Company
+  
   attr_accessor :speed, :route, :current_station, :type_car
-  attr_reader :train_number, :cars
+  attr_accessor :train_number, :cars
   NUMBER_TRAIN = /^(\w|\d){3}-*(\w|\d){2}$/
 
-  @@trains = []
+  @@trains = {}
 
   def self.find(train_number)
     @@trains[train_number]
@@ -82,7 +82,6 @@ private
 def validate!
     raise "Train number can't be nil" if train_number.nil?
     raise "Wrong train number. Format should be: xxx-xx" if train_number !~ NUMBER_TRAIN 
-    raise "Number of cars must not exceed 30" if cars.length < 30
     true    
   end
 end

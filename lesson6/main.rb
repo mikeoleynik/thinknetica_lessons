@@ -1,3 +1,5 @@
+require_relative "./company_name.rb"
+require_relative "./instance_counter.rb"
 require_relative "./train.rb"
 require_relative "./station.rb"
 require_relative "./route.rb"
@@ -192,3 +194,6 @@ class TrainConsole
     self.trains[index].nil?
   end
 end
+
+train_console = TrainConsole.new
+train_console.start
