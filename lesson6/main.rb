@@ -57,7 +57,9 @@ class TrainConsole
   def create_station
     name = station_input
     self.stations << Station.new(name)
-    puts "Station with name: #{name} has been created."
+  rescue ArgumentError => e
+    puts e.message
+    retry
   end
 
   def station_input
@@ -68,6 +70,9 @@ class TrainConsole
   def create_train
     number, type, carriages_count = train_input
     create_train!(number, type, carriages_count)
+  rescue ArgumentError => e
+    puts e.message
+    retry
   end
 
   def train_input
@@ -92,8 +97,10 @@ class TrainConsole
       carriage = get_carriage(self.trains[index].type)
 
       self.trains[index].add_carriage(carriage)
-      puts "Carriage has been added"
     end
+  rescue ArgumentError => e
+    puts e.message
+    retry
   end
 
   def delete_carriage
@@ -103,7 +110,6 @@ class TrainConsole
       puts "Wrong index"
     else
       self.trains[index].delete_carriage
-      puts "Carriage has been deleted"
     end
   end
 
@@ -120,9 +126,7 @@ class TrainConsole
 
   def display_stations
     index = choose_station
-
-    puts "Station #{index}, Trains:"
-    puts self.stations[index].trains
+    self.stations[index].trains
   end
 
   def unknown_command
@@ -150,7 +154,6 @@ class TrainConsole
     train = get_train(number, type)
     carriages_count.times { train.add_carriage(carriage) }
     self.trains << train
-    puts "Train with number #{number}, type #{type} has been created with #{carriages_count} carriages"
   end
 
   def get_train(number, type)
@@ -179,7 +182,6 @@ class TrainConsole
     route = Route.new(self.trains[train_index].current_station, self.stations[station_index])
     self.trains[train_index].route = route
     self.trains[train_index].go
-    puts "Train went from #{route.from} to #{route.to}"
   end
 
   def check_station_indext?(index)
@@ -190,6 +192,3 @@ class TrainConsole
     self.trains[index].nil?
   end
 end
-
-# train_console = TrainConsole.new
-# train_console.start
