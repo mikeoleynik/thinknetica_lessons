@@ -4,14 +4,10 @@ class Train
   include Company
   include InstanceCounter
 
-  attr_accessor :speed      #количество вагонов, скорость
-  attr_accessor :route
-  attr_reader :train_number, :cars     #номер поезда, тип поезда
-  attr_accessor :current_station
-  attr_accessor :type_car
+  attr_accessor :speed, :route, :current_station, :type_car
+  attr_reader :train_number, :cars
+  NUMBER_TRAIN = /^(\w|\d){3}-*(\w|\d){2}$/
 
-  # В классе Train создать метод класса find, который принимает номер поезда (указанный при его создании) 
-  # и возвращает объект поезда по номеру или nil, если поезд с таким номером не найден.
   @@trains = []
 
   def self.find(train_number)
@@ -23,15 +19,14 @@ class Train
     @train_number = train_number
     @speed = 0
     @cars = []
-    puts "Создан поезд №#{train_number}"
     @@trains[train_number] = self
+    validate!
   end
 
-  def validate!
-    raise "sfdsf" if train_number.nil? # на наличие атрибутов
-    raise "sfdsf" if /[1-9, a-z]{3}+[-]*+[1-9, a-z]{2}/# на номер поезда (цифры и необяхательно буква)
-    raise "sfdsf" if train_number.lenght < 4 # на длину номера  
-    raise "rjk" if cars.length < 50 # на кол-во вагонов    
+  def valid?
+    validate!
+  rescue
+    false
   end
 
   def stop
@@ -39,7 +34,7 @@ class Train
   end
 
   def corrent_speed
-    puts "Текущая скорость: #{speed}"
+    @speed
   end
 
   def car_count
@@ -48,30 +43,14 @@ class Train
 
   def add_car(car) 
     @cars << car if speed == 0 && car_allowed?(car)
-      # if speed == 0 && type_car == "cargo"
-      #   @car_count += 1     
-      #   puts "Добавлен грузовой вагон #{car_count} к грузовому поезду #{train_number}"
-      #   @cars_arr << car 
-      # elsif speed == 0 && type_car == "passenger"
-      #   @car_count += 1     
-      #   puts "Добавлен пассажирский вагон #{car_count} к пассажирскому поезду #{train_number}"
-      #   @cars_arr << car
-      # end
   end
 
   def del_car(car)
     @cars.delete(car) if speed == 0
-    # if speed == 0 && type_car == "cargo"
-    #   @car_count -= 1 
-    #   puts "В грузовом поезде #{train_number} теперь вагонов #{car_count} шт."
-    # elsif speed == 0 && type_car == "passenger"
-    #   @car_count -= 1 
-    #   puts "В пассажирском поезде #{train_number} теперь вагонов #{car_count} шт."
-    # end
   end
 
   def cars_number
-    puts "Количество вагонов: #{car_count}"
+    @cars
   end
 
   def gets_routes(train_route)
@@ -80,15 +59,15 @@ class Train
   end
 
   def current_station
-    puts "Current station is #{route.station(current_station).name}" if current_station.zero?
+    route.station(current_station).name if current_station.zero?
   end
 
   def next_station
-    puts "Next station will be #{route.station(current_station + 1).name}" if route.station(current_station + 1).nil?
+    route.station(current_station + 1).name if route.station(current_station + 1).nil?
   end
 
   def prev_station
-    puts "Previous station was #{route.station(current_station - 1).name}" if route.nil?
+    route.station(current_station - 1).name if route.nil?
   end
 
   def go_prev
@@ -99,4 +78,11 @@ class Train
     self.current_station += 1 unless route.station(current_station + 1).nil?
   end
 
+private
+def validate!
+    raise "Train number can't be nil" if train_number.nil?
+    raise "Wrong train number. Format should be: xxx-xx" if train_number !~ NUMBER_TRAIN 
+    raise "Number of cars must not exceed 30" if cars.length < 30
+    true    
+  end
 end

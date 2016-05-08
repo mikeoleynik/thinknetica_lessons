@@ -3,7 +3,6 @@
 class Routes
   attr_accessor :route
   
-
   def initialize(primary, terminal)
     @route = [primary, terminal]   
   end 
@@ -17,8 +16,7 @@ class Routes
   end   
 
   def show_station
-    puts "В маршрут входят следующие станции:"
-    puts @route
+    @route
   end
 
 end

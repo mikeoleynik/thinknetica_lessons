@@ -1,39 +1,29 @@
 # coding: utf-8
 
-# Реализовать проверку (валидацию) данных для всех классов. Проверять основные атрибуты 
-# (название, номер, тип и т.п.) на наличие, длину и т.п. (в зависимости от атрибута):
-#   - Валидация должна взываться при создании объекта, если объект невалидный, то должно выбрасываться 
-#       исключение
-#   - Должен быть метод valid? который возвращает true, если объект валидный и false - в противном случае.
-
 class Station
   include InstanceCounter
-
+  NAME_FORMAT = /[a-z]+\d*/
   attr_reader :name, :trains
   
   @@stations = []
 
   def self.all
-    puts "Станции: #{@@stations}"
+    @@stations
   end
 
   def initialize(name)
     @name = name
-    puts "создана станция #{name}"
+    name
     @trains = []
     @station = []
     @@stations << name
     validate!
   end 
 
-  def validate!
-    raise "sfdsf" if name.nil? # наличие атрибутов    
-    raise "dsf invalid" if /[a-z]+\d*/ # в названии только буквы
-    
-  end
-
   def valid?
-    
+    validate!
+  rescue
+    false
   end
 
   def station_list
@@ -62,4 +52,11 @@ class Station
   def show_type(type)
      trains.each { |train| train == type } # выводит просто список, не по типу.
   end
+
+  private
+  def validate!
+    raise "Name can't be nil" if name.nil?    
+    raise "Wrong name" if name !~ NAME_FORMAT
+    true
+  end  
 end
