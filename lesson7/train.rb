@@ -1,8 +1,5 @@
 # coding: utf-8
 
-# написать метод, который принимает блок и проходит по всем вагонам поезда 
-# (вагоны должны быть во внутреннем массиве), передавая каждый объект вагона в блок.
-
 class Train
   include InstanceCounter
   include Company
@@ -79,6 +76,16 @@ class Train
 
   def go_next
     self.current_station += 1 unless route.station(current_station + 1).nil?
+  end
+
+  def cars_trains(&block)
+  # написать метод, который принимает блок и проходит по всем вагонам поезда 
+  # (вагоны должны быть во внутреннем массиве), передавая каждый объект вагона в блок.
+    if block_given?
+      @cars.each {|cars| yield(cars)}
+    else
+      puts "Передайте аргументом блок"
+    end
   end
 
 private

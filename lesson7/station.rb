@@ -1,8 +1,5 @@
 # coding: utf-8
 
-# написать метод, который принимает блок и проходит по всем поездам на станции, 
-# передавая каждый поезд в блок
-
 class Station
   include InstanceCounter
   NAME_FORMAT = /[a-z]+\d*/
@@ -53,6 +50,16 @@ class Station
 
   def show_type(type)
      trains.each { |train| train == type } # выводит просто список, не по типу.
+  end
+
+  def trains_on_station(&block)
+    # написать метод, который принимает блок и проходит по всем поездам на станции, 
+    # передавая каждый поезд в блок
+    if block_given?
+      @trains.each { |train| yield(train) }
+    else
+      puts "Передайте аргументом блок"
+    end
   end
 
   private

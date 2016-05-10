@@ -3,10 +3,11 @@
 class Cars
   include Company 
   NUMBER_FORMAT = /^\d{2}$/
-  attr_accessor :number, :type_car
+  attr_accessor :number, :type_car, :capacity
 
-  def initialize(number, type_car)
+  def initialize(number, type_car, capacity)
     @number = number
+    @capacity = capacity
     validate! 
   end
 
