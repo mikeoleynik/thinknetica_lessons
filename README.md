@@ -1,0 +1,1 @@
+Learning Ruby on intensive [Thinknetica](http://thinknetica.com/)
