@@ -58,6 +58,7 @@ class Station
     if block_given?
       @trains.each { |train| yield(train) }
     else
+      @trains
       puts "Передайте аргументом блок"
     end
   end
