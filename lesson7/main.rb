@@ -12,7 +12,7 @@ require_relative "./passenger_car.rb"
 
 class UI
   attr_reader :stations, :trains
-  #attr_accessor :name, :train_number
+  attr_accessor :name, :train_number
 
   def initialize
     @stations = []
@@ -45,10 +45,10 @@ class UI
           show_car
         when 'q'
           break
-        end
       end
     end
-  
+  end
+
   def create_station
     puts "Input name of the station"
     name = gets.chomp
