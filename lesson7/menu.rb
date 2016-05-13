@@ -9,15 +9,16 @@ require_relative "./passenger_train.rb"
 require_relative "./cargo_car.rb"
 require_relative "./passenger_car.rb"
 
-station = Station.new("Alabama")
+station = Station.new("lubna")
+train = PassengerTrain.new("123-EE")
 
-station.add_train(22, "cargo")
-station.add_train(222, "cargo")
-station.add_train(2212, "cargo")
-station.add_train(242, "cargo")
+
+station.add_train("123-EE")
+
 station.show_trains
 
 # связывает их между собой ??
+# работа с двумя файлами .рб
 
 # Создает тестовые данные (станции, поезда, вагоны) и связывает их между собой.
 # Используя созданные в рамках задания методы, написать код, который перебирает последовательно все станции и для 
