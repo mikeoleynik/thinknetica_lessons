@@ -42,7 +42,7 @@ class Train
   end
 
   def add_car(car) 
-    @cars << car if speed == 0 && car_allowed?(car)
+    @cars << car if speed == 0 && car_allowed?(car) # как он ее увидел?
   end
 
   def del_car(car)
@@ -85,6 +85,10 @@ class Train
       puts "Передайте аргументом блок"
     end
   end
+
+  def show
+    puts "Train N:#{train_number}"     
+  end 
 
 private
 def validate!
