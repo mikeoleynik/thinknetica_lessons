@@ -1,9 +1,7 @@
-# coding: utf-8
-
 class Train
   include InstanceCounter
   include Company
-  
+
   attr_accessor :speed, :route, :current_station, :type_car
   attr_accessor :train_number, :cars
   NUMBER_TRAIN = /^(\w|\d){3}-*(\w|\d){2}$/
@@ -79,11 +77,7 @@ class Train
   end
 
   def cars_trains(&block)
-    if block_given?
-      @cars.each {|cars| yield(cars)}
-    else
-      puts "Передайте аргументом блок"
-    end
+    @cars.each {|cars| yield(cars)}
   end
 
   def show

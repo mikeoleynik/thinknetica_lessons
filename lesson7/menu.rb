@@ -1,3 +1,6 @@
+# coding: utf-8
+
+require_relative "./occupancy.rb"
 require_relative "./company_name.rb"
 require_relative "./instance_counter.rb"
 require_relative "./train.rb"
@@ -10,20 +13,41 @@ require_relative "./cargo_car.rb"
 require_relative "./passenger_car.rb"
 
 station = Station.new("lubna")
+station1 = Station.new("moscow")
+station2 = Station.new("lipetsk")
+
 train = PassengerTrain.new("123-EE")
+train1 = PassengerTrain.new("153-EE")
+train2 = CargoTrain.new("121-EE")
 
+car = PassengerCar.new("22", 66)
+car1 = PassengerCar.new("20", 66)
+car2 = PassengerCar.new("30", 66)
+car3 = CargoCar.new("22", 66)
+car4 = CargoCar.new("20", 66)
+car5 = CargoCar.new("30", 66)
 
-station.add_train("123-EE")
+station.add_train(train)
+station1.add_train(train1)
+station2.add_train(train2)
 
-station.show_trains
+train.add_car(car)
+train.add_car(car1)
+train.add_car(car2)
 
-# связывает их между собой ??
-# работа с двумя файлами .рб
+train2.add_car(car3)
+train2.add_car(car4)
+train2.add_car(car5)
 
-# Создает тестовые данные (станции, поезда, вагоны) и связывает их между собой.
-# Используя созданные в рамках задания методы, написать код, который перебирает последовательно все станции и для 
-# каждой станции выводит список поездов в формате:
-# - Номер поезда, тип, кол-во вагонов
-# А для каждого поезда на станции выводить список вагонов в формате:
-# - Номер вагона (можно назначать автоматически), тип вагона, кол-во свободных и занятых мест 
-# (для пассажирского вагона) или кол-во свободного и занятого объема (для грузовых вагонов).
+car.occupy
+car.occupy
+
+Station.all.each do |station|
+  puts station.name
+  station.trains_on_station do |train|
+    puts train.train_number
+      train.cars_trains do |car|
+        puts "Номер вагона: #{car.number}, Вместимость вагона: #{car.capacity}, свободных мест: #{car.available}, Занятых: #{car.occupied}"  
+      end 
+  end
+end

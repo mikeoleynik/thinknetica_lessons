@@ -70,7 +70,7 @@ class UI
     number = gets.chomp
     puts "Input capacity"
     capacity = gets.chomp
-    self.train << PassengerCar.new(number, capacity) # не видит train
+    self.trains << PassengerCar.new(number, capacity) # не видит train
   end
 
   def create_cargo_car
@@ -81,12 +81,10 @@ class UI
 
   def show_train
     @stations.each {|station| puts "Train number:#{train_number}" } # не видит train_number
-    yield(station) if block_given?
   end
 
   def show_car
     @trains.each {|train| puts "Номер вагона:#{}, тип вагона: #{type}, свободно: #{}, занято: #{}"} # как и что здесь указывать (свободно и занято)
-    yield(train) if block_given?
   end
 end
 

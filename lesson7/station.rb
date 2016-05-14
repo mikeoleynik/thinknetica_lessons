@@ -33,7 +33,7 @@ class Station
     station << train
   end
 
-  def add_train(train, type)
+  def add_train(train)
     trains << train 
   end
 
@@ -53,14 +53,7 @@ class Station
   end
 
   def trains_on_station(&block)
-    # написать метод, который принимает блок и проходит по всем поездам на станции, 
-    # передавая каждый поезд в блок
-    if block_given?
       @trains.each { |train| yield(train) }
-    else
-      @trains
-      puts "Передайте аргументом блок"
-    end
   end
 
   private
