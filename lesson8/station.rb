@@ -2,10 +2,18 @@
 
 class Station
   include InstanceCounter
+  
   NAME_FORMAT = /[a-z]+\d*/
+  
   attr_reader :name, :trains
 
+  alias_method :tr_to_st, :add_train_to_station
+
   @@stations = []
+
+  def self.all
+    @@stations
+  end
 
   def initialize(name)
     @name = name
@@ -13,10 +21,6 @@ class Station
     @trains = []
     @station = []
     @@stations << self
-  end
-
-  def self.all
-    @@stations
   end
 
   def valid?

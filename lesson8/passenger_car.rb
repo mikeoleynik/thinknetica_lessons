@@ -1,2 +1,1 @@
-class PassengerCar < Cars
-end
+class PassengerCar < Cars; end

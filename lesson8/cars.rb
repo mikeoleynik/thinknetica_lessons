@@ -2,6 +2,7 @@ class Cars
   include Company
 
   NUMBER_FORMAT = /^\d{2}$/
+
   attr_accessor :number, :capacity, :occupied
 
   def initialize(number, capacity)
