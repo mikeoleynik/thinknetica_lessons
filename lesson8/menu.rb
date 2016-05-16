@@ -46,7 +46,8 @@ Station.all.each do |st|
   st.trains_on_station do |tr|
     puts tr.train_number
     tr.cars_trains do |cr|
-      puts "Номер вагона: #{cr.number}, Вместимость вагона: #{cr.capacity}, свободных мест: #{cr.available}, Занятых: #{cr.occupied}"
+      puts "Номер вагона: #{cr.number}, Вместимость вагона: #{cr.capacity}," \
+           " свободных мест: #{cr.available}, Занятых: #{cr.occupied}"
     end
   end
 end

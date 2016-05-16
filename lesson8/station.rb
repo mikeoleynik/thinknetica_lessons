@@ -2,12 +2,12 @@
 
 class Station
   include InstanceCounter
-  
+
   NAME_FORMAT = /[a-z]+\d*/
-  
+
   attr_reader :name, :trains
 
-  alias_method :tr_to_st, :add_train_to_station
+  #alias_method :tr_to_st, :add_train_to_station
 
   @@stations = []
 
@@ -67,4 +67,6 @@ class Station
     raise 'Wrong name' if name !~ NAME_FORMAT
     true
   end
+
+  alias_method :tr_to_st, :add_train_to_station
 end

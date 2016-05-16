@@ -6,7 +6,7 @@ class Train
 
   attr_accessor :speed, :route, :current_station, :type_car
   attr_accessor :train_number, :cars
-  
+
   @@trains = {}
 
   def self.find(train_number)
