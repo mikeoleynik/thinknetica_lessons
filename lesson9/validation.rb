@@ -1,24 +1,24 @@
-Содержит метод класса validate. Этот метод принимает в качестве параметров имя проверяемого атрибута, 
-а также тип валидации и при необходимости дополнительные параметры.
+module Validation
+  def self.included(base)
+    base.extend ClassMethods
+    base.send :include, InstanceMethods
+  end
 
-Возможные типы валидаций:
-   - presence - требует, чтобы значение атрибута было не nil и не пустой строкой. Пример использования:  
- 
-validate :name, :presence
- 
-  - format (при этом отдельным параметром задается регулярное выражение для формата). 
-  Треубет соответствия значения атрибута заданному регулярному выражению. Пример:  
- 
-validate :number, :format, /A-Z{0,3}/
- 
- -  type (третий параметр - класс атрибута). Требует соответствия значения атрибута заданному классу. Пример:  
- 
-validate :station, :type, RailwayStation
- 
- Содержит инстанс-метод validate!, который запускает все проверки (валидации), 
- указанные в классе через метод класса validate. В случае ошибки валидации выбрасывает 
- исключение с сообщением о том, какая именно валидация не прошла
-Содержит инстанс-метод valid? который возвращает true, если все проверки валидации прошли успешно и false, 
-если есть ошибки валидации.
+  module ClassMethods
+    def self.validate()
+      validate :name, :presence
+      validate :number, :format, /A-Z{0,3}/
+      validate :station, :type, RailwayStation
+    end
+  end
 
-Подключить эти модули в свои классы и продемонстрировать их использование. Валидации заменить на методы из модуля Validation. 
+  module InstanceMethods
+    def validate!
+      validate
+    end
+
+    def valid?
+     true if validate 
+    end
+  end
+end

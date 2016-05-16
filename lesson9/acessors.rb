@@ -1,15 +1,20 @@
-# Написать модуль Acessors, содержащий следующие методы, которые можно вызывать на уровне класса:
+module Accessors
 
-# - метод attr_accessor_with_history
-# Этот метод динамически создает геттеры и сеттеры для любого кол-ва атрибутов, 
-# при этом сеттер сохраняет все значения инстанс-переменной при изменении этого значения. 
+  def attr_accessor_with_history
+  #   def attr_accessor(*methods)
+  #   methods.each do |method|
+  #     raise TypeError.new("method name  is not symbol") unless method.is_a?(Symbol)
+  #     define_method(method) do
+  #       instance_variable_get("@#{method}")
+  #     end
+  #     define_method("#{method}=") do |v|
+  #       instance_variable_set("@#{method}", v)
+  #     end
+  #   end
+  # end
+  end
 
-# Также в класс, в который подключается модуль должен добавляться инстанс-метод
-#  <имя_атрибута>_history
-# который возвращает массив всех значений данной переменной.
-
-# метод strong_attr_acessor
- 
-#  который принимает имя атрибута и его класс. При этом создается геттер и сеттер для одноименной инстанс-переменной, 
-#  но сеттер проверяет тип присваемоего значения. Если тип отличается от того, который указан вторым параметром, 
-#  то выбрасывается исключение. Если тип совпадает, то значение присваивается.
+  def strong_attr_acessor
+    
+  end
+end
