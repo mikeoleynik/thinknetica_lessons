@@ -7,8 +7,6 @@ class Station
 
   attr_reader :name, :trains
 
-  #alias_method :tr_to_st, :add_train_to_station
-
   @@stations = []
 
   def self.all
