@@ -32,15 +32,15 @@ class Station
   end
 
   def add_train_to_station(train)
-    station << train
+    @station << train
   end
 
   def add_train(train)
-    trains << train
+    @trains << train
   end
 
   def send_train(train)
-    trains.delete(train)
+    @trains.delete(train)
   end
 
   def show_trains
@@ -51,7 +51,7 @@ class Station
   end
 
   def show_type(type)
-    trains.each { |train| train == type }
+    @trains.each { |train| train == type }
   end
 
   def trains_on_station
