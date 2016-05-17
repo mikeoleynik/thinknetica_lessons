@@ -5,7 +5,7 @@ module Validation
   end
 
   module ClassMethods
-    def self.validate()
+    def self.validate(имя_проверяемого_атрибута)
       validate :name, :presence
       validate :number, :format, /A-Z{0,3}/
       validate :station, :type, RailwayStation
@@ -14,11 +14,28 @@ module Validation
 
   module InstanceMethods
     def validate!
-      validate
+      self.validate
     end
 
     def valid?
-     true if validate 
+      validate!
+    rescue
+      false
     end
+
+  private
+  def presence
+    value = 
+    fail "skdjfhsd" if value.nil? || value.empty?
+  end
+
+  def format
+    value = 
+    fail "dasdasda" if 
+  end
+
+  def type
+    fail "Wrong Format" if /A-Z{0,3}/
+  end
   end
 end

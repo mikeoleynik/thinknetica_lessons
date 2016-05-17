@@ -2,10 +2,12 @@
 
 class Station
   include InstanceCounter
+  extend Accessors
 
   NAME_FORMAT = /[a-z]+\d*/
 
   attr_reader :name, :trains
+  attr_accessor_with_history :my_attr
 
   @@stations = []
 
