@@ -3,11 +3,16 @@
 class Station
   include InstanceCounter
   extend Accessors
+  include Validation
 
   NAME_FORMAT = /[a-z]+\d*/
 
   attr_reader :name, :trains
   attr_accessor_with_history :my_attr
+  strong_attr_accessor(:strong_attr, String)
+
+  validate :name, :presence
+  validate :name, :format,  NAME_FORMAT
 
   @@stations = []
 
@@ -62,11 +67,11 @@ class Station
 
   private
 
-  def validate!
-    raise "Name can't be nil" if name.nil?
-    raise 'Wrong name' if name !~ NAME_FORMAT
-    true
-  end
+  # def validate!
+  #   raise "Name can't be nil" if name.nil?
+  #   raise 'Wrong name' if name !~ NAME_FORMAT
+  #   true
+  # end
 
   alias_method :tr_to_st, :add_train_to_station
 end
