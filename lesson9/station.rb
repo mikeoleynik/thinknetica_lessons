@@ -12,7 +12,7 @@ class Station
   strong_attr_accessor(:strong_attr, String)
 
   validate :name, :presence
-  validate :name, :format,  NAME_FORMAT
+  validate :name, :format, NAME_FORMAT
 
   @@stations = []
 
@@ -65,7 +65,7 @@ class Station
     @trains.each { |train| yield(train) }
   end
 
-  private
+  # private
 
   # def validate!
   #   raise "Name can't be nil" if name.nil?
@@ -73,5 +73,5 @@ class Station
   #   true
   # end
 
-  alias_method :tr_to_st, :add_train_to_station
+  alias tr_to_st add_train_to_station
 end
