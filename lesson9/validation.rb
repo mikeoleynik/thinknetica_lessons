@@ -6,43 +6,37 @@ module Validation
 
   module ClassMethods
     def validate(name, *args)
-      @validates ||= {}
-      @validates[name] = *args
-      puts "validate #{@validates}"
+      validates_name = '@validates'
+      instance_variable_set(validates_name, {}) unless instance_variable_defined?(validates_name)
+      instance_variable_get(validates_name)[name] = *args
     end
   end
 
   module InstanceMethods
+
     def validate!
-      valid_vars = self.class.instance_variable_get("@validates")
-      puts "validate! #{valid_vars}"
-      valid_vars.each do |name, args|
-        @name_value = instance_variable_get("@#{name}")
-        @param = args[1]
-        send args[0]
+      self.class.instance_variable_get('@validates').each do |name, args|
+        send("validate_#{args[0]}", name, *args[1, args.size])
       end
+      true
     end
 
     def valid?
       validate!
-    rescue RuntimeError
+    rescue ArgumentError
       false
     end
 
-    def presence
-      fail 'Error value is nil' if @name_value.nil?
-      fail 'Error value is empty' if @name_value.empty?
-      true
+    private
+
+    def validate_presence(name)
+      value = instance_variable_get("@#{name}")
+      fail 'Argument is empty string' if value.nil? || value.empty?
     end
 
-    def format
-      fail "Error format #{@param}" if @name_value !~ @param
-      true
-    end
-
-    def type
-      fail "Error type #{@param}" unless @name_value.is_a?(@param)
-      true
+    def validate_format(name, format)
+      value = instance_variable_get("@#{name}")
+      fail "Invalid format" unless value =~ format
     end
   end
 end
