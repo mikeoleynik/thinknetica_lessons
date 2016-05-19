@@ -6,7 +6,7 @@ module Validation
 
   module ClassMethods
     def validate(name, *args)
-      validates_name = '@validates'
+      validates_name = "@validates"
       instance_variable_set(validates_name, {}) unless instance_variable_defined?(validates_name)
       instance_variable_get(validates_name)[name] = *args
     end
@@ -15,7 +15,7 @@ module Validation
   module InstanceMethods
 
     def validate!
-      self.class.instance_variable_get('@validates').each do |name, args|
+      self.class.instance_variable_get("@validates").each do |name, args|
         send("validate_#{args[0]}", name, *args[1, args.size])
       end
       true
@@ -31,7 +31,7 @@ module Validation
 
     def validate_presence(name)
       value = instance_variable_get("@#{name}")
-      fail 'Argument is empty string' if value.nil? || value.empty?
+      fail "Argument is empty string" if value.nil? || value.empty?
     end
 
     def validate_format(name, format)
