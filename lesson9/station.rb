@@ -1,4 +1,7 @@
 # coding: utf-8
+require_relative './instance_counter.rb'
+require_relative './validation.rb'
+require_relative './acessors.rb'
 
 class Station
   include InstanceCounter
@@ -12,7 +15,8 @@ class Station
   strong_attr_accessor(:strong_attr, String)
 
   validate :name, :presence
-  validate :name, :format, NAME_FORMAT
+  # validate :name, :format, NAME_FORMAT
+  # validate :station, :type, Station
 
   @@stations = []
 
@@ -26,12 +30,6 @@ class Station
     @trains = []
     @station = []
     @@stations << self
-  end
-
-  def valid?
-    validate!
-  rescue
-    false
   end
 
   def station_list
@@ -64,14 +62,6 @@ class Station
   def trains_on_station
     @trains.each { |train| yield(train) }
   end
-
-  # private
-
-  # def validate!
-  #   raise "Name can't be nil" if name.nil?
-  #   raise 'Wrong name' if name !~ NAME_FORMAT
-  #   true
-  # end
 
   alias tr_to_st add_train_to_station
 end

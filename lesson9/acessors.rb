@@ -14,9 +14,10 @@ module Accessors
       instance_variable_get(name_var_history)
     end
     define_method("#{name}=".to_sym) do |value|
+        current_value = instance_variable_get(name_var)
+        instance_variable_set(name_var_history, history << current_value)
         instance_variable_set(name_var, value)
-        instance_variable_set(name_var_history, history << value)
-    end
+        end
   end
 
   def strong_attr_accessor(name, type)
